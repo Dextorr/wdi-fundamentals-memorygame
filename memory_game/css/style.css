@@ -55,6 +55,30 @@ h3 {
 	font-size: 18px;
 }
 
+/*FOOTER*/
+
+footer {
+	text-transform: uppercase;
+	padding: 0 20px;
+	background: #0D2C40;
+	color: #fff;
+	font-size: 14px;
+	letter-spacing: 0.8em;
+	font-weight: 500;
+}
+
+footer p {
+	font-family: Raleway, sans-serif;
+}
+
+p.message {
+	float: right;
+}
+
+p.copyright {
+	float: left;
+}
+
 /*LINKS*/
 
 nav {
@@ -69,9 +93,42 @@ a {
 	font-size: 18px;
 	text-decoration: none;
 	margin: 0 20px;
+	border-bottom: 2px solid transparent;
+}
+
+a:hover {
+	border-color: #fff;
+}
+
+.socialLinks a {
+	border: none;
+}
+
+.name a {
+	margin: 0;
+	letter-spacing: 0.8em;
+	color: #f15b31;
+	font-weight: 700;
+	border: none;
+}
+
+.socialLinks a:hover,
+.name a:hover {
+	text-decoration: underline;
 }
 
 ul {
 	list-style: none;
 	padding: 0;
+}
+
+/*CLEARFIX*/
+
+.clearfix:after {
+visibility: hidden;
+display: block;
+content: " ";
+clear: both;
+height: 0;
+font-size: 0;
 }
