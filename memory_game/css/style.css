@@ -122,6 +122,10 @@ ul {
 	padding: 0;
 }
 
+li {
+	margin: 10px;
+}
+
 /*CLEARFIX*/
 
 .clearfix:after {
