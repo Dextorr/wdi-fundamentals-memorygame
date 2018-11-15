@@ -22,6 +22,7 @@ var cards = [
 	}
 ];
 var cardsInPlay = [];
+
 var checkForMatch = function(){
 	//check to see if flipped cards match
 	if (cardsInPlay[0]===cardsInPlay[1]){
@@ -31,10 +32,15 @@ var checkForMatch = function(){
 			alert("Sorry, try again.");
 		}
 }
-var flipCard = function(cardId){
+
+var flipCard = function(){
+	//get data-id attribute from clicked card and store in cardId variable
+	var cardId = this.getAttribute('data-id')
 	//print flipped card to console
 	console.log("User flipped " + cards[cardId].rank + " of " + cards[cardId].suit);
 	console.log(cards[cardId].cardImage);
+	//change card's image from card back to its face value
+	this.setAttribute('src', cards[cardId].cardImage);
 	//add flipped card to cardsInPlay array
 	cardsInPlay.push(cards[cardId].rank);
 	//check if there have been 2 cards flipped
@@ -43,5 +49,14 @@ var flipCard = function(cardId){
 	}
 }
 
-flipCard(0);
-flipCard(2);
+var createBoard = function(){
+	for (var i=0;i<cards.length;i++){
+		var cardElement = document.createElement('img');
+		cardElement.setAttribute('src', 'images/back.png');
+		cardElement.setAttribute('data-id', i);
+		cardElement.addEventListener('click', flipCard);
+		document.getElementById('game-board').appendChild(cardElement);
+	}
+}
+
+createBoard();
