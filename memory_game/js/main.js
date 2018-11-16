@@ -23,13 +23,36 @@ var cards = [
 ];
 var cardsInPlay = [];
 
+var shuffle = function(deck){
+	//Keep count of cards left to shuffle
+	var indexCount = deck.length-1;
+	//Copy of deck to splice
+	var deckTemp = deck;
+	//Empty array to store shuffled cards
+	var shuffledDeck = [];
+	while (indexCount>=0){
+		//Select random index of deck array...
+		var random = Math.floor(Math.random()*(indexCount));
+		//...and add to the shuffled deck array
+		shuffledDeck.push(deckTemp[random]);
+		//Remove selected card from deck to be shuffled
+		deckTemp.splice(random, 1);
+		//Decrease number of cards left to shuffle
+		indexCount-=1;
+	}
+	return shuffledDeck;
+}
+
+//Shuffle deck before it's displayed on the game board
+cards = shuffle(cards);
+
 var checkForMatch = function(){
 	//check to see if flipped cards match
-	if (cardsInPlay[0]===cardsInPlay[1]){
-			alert("You found a match!");
+	if (cardsInPlay[0].rank===cardsInPlay[1].rank){
+			document.getElementById('gameHeader').textContent = "You found a match!";
 		}
 		else {
-			alert("Sorry, try again.");
+			document.getElementById('gameHeader').textContent = "Sorry, try again.";
 		}
 }
 
@@ -39,10 +62,12 @@ var flipCard = function(){
 	//print flipped card to console
 	console.log("User flipped " + cards[cardId].rank + " of " + cards[cardId].suit);
 	console.log(cards[cardId].cardImage);
-	//change card's image from card back to its face value
+	//change card's image from card back to its face value...
 	this.setAttribute('src', cards[cardId].cardImage);
+	//...and set its class to "selected"
+	this.className = 'selected';
 	//add flipped card to cardsInPlay array
-	cardsInPlay.push(cards[cardId].rank);
+	cardsInPlay.push(cards[cardId]);
 	//check if there have been 2 cards flipped
 	if (cardsInPlay.length === 2){
 		checkForMatch();
