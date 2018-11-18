@@ -154,6 +154,11 @@ li {
 	border-radius: 10px; 
 }
 
+#reset-button:hover {
+	color: #f15b31;
+	background: #444;
+}
+
 /*CLEARFIX*/
 
 .clearfix:after {
