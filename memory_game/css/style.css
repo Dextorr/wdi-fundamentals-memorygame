@@ -18,7 +18,15 @@ p {
 }
 
 img {
-	margin: 40px 8px;
+	margin: 10px 8px;
+	width: 20%;
+	height: 280px;
+}
+
+#game-board {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 /*HEADINGS*/
@@ -29,7 +37,13 @@ header {
 	padding: 30px 20px;
 }
 
-h1, h2, h3, a {
+#gameHeader,
+#game-board h4 {
+	width: 100%;
+	margin: 0;
+}
+
+h1, h2, h3, h4, a {
 	letter-spacing: 1px;
 	font-family: Raleway, sans-serif;
 	text-transform: uppercase;
@@ -50,7 +64,7 @@ h2 {
 	font-size: 20px;
 }
 
-h3 {
+h3, h4 {
 	font-weight: 600;
 	font-size: 18px;
 }
@@ -79,7 +93,7 @@ p.copyright {
 	float: left;
 }
 
-/*LINKS*/
+/*LINKS & BUTTONS*/
 
 nav {
 	background: #00a6b3;
@@ -98,6 +112,11 @@ a {
 
 a:hover {
 	border-color: #fff;
+}
+
+a#tryAgainButton {
+	margin: 0;
+	border: none;
 }
 
 .socialLinks a {
@@ -124,6 +143,15 @@ ul {
 
 li {
 	margin: 10px;
+}
+
+#reset-button {
+	font-size: 1.5em;
+	font-family: Raleway, sans-serif;
+	font-weight: 700;
+	padding: 5px;
+	background: #f15b31;
+	border-radius: 10px; 
 }
 
 /*CLEARFIX*/
