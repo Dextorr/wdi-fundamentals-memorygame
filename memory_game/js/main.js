@@ -105,9 +105,9 @@ var checkForMatch = function(){
 	//check to see if flipped cards match
 	if (cardsInPlay[0].rank===cardsInPlay[1].rank){
 			//change game header message
-			document.getElementById('gameHeader').textContent = "You found a match!";
+			document.getElementById('gameHeader').textContent = "You found a match! Click another two cards to flip.";
 			//update the score
-			score += 50;
+			score += 30;
 			updateScore();
 			//empty cardsInPlay array
 			cardsInPlay = [];
@@ -127,9 +127,8 @@ var checkForMatch = function(){
 			}
 			//check if the game is over
 			if (document.getElementsByClassName('scored').length === cards.length){
-				//and display the game end message as an alert 
-				alert("Congratulations! You scored " + score + " points!\n" + "Click 'OK' to play again.");
-				resetBoard();
+				//and display the game end message
+				document.getElementById('gameHeader').innerHTML = "Congratulations! You scored " + score + " points!<br>Click on 'New Game' to try again!";
 			}
 		}
 		else {
@@ -143,6 +142,8 @@ var checkForMatch = function(){
 }
 
 var flipCard = function(){
+	//remove event listener from flipped card to prevent player from scoring a match by clicking the same card twice
+	this.removeEventListener('click', flipCard);
 	//get data-id attribute from clicked card and store in cardId variable
 	var cardId = this.getAttribute('data-id')
 	//print flipped card to console
@@ -186,6 +187,8 @@ var resetBoard = function(){
 	//reset the score
 	score = 0;
 	updateScore();
+	//reset the game header message
+	document.getElementById('gameHeader').textContent = "Click on two cards to begin!";
 	//recreate the board
 	createBoard();
 }
