@@ -21,6 +21,8 @@ img {
 	margin: 10px 8px;
 	width: 20%;
 	height: 280px;
+	border: solid 2px #777;
+	border-radius: 10px;
 }
 
 #game-board {
